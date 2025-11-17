@@ -30,6 +30,17 @@ def softmax(x):
 def identity(x):
     return x
 
+# 损失函数
+def mean_sqaured_error(y, t):
+    return 0.5 * np.sum(np.power(y - t, 2))
+
+def cross_entropy_error(y, t):
+    if y.ndim == 1:
+        t = t.reshape(1, t.size)
+        y = y.reshape(1, y.size)
+    if t.size == y.size:
+        t = t.argmax(axis=1)
+    return -np.sum(np.log(y[np.arange(t.size), t] + 1e-10))
 if __name__ == '__main__':
     x = np.array([0,1,2,3,4,5,-1,0,1,2,3,4,5])
     print(step_function1(x))
