@@ -11,6 +11,7 @@ def tangent_line(f, x):
 
     # 利用数值微分
     a = numerical_diff(f, x)
+    print(a)
     b = y - a * x
     return lambda t: a * t + b
 
